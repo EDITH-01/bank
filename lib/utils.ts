@@ -108,7 +108,7 @@ export function getAccountTypeColors(type: AccountTypes) {
         bg: "bg-blue-25",
         lightBg: "bg-blue-100",
         title: "text-blue-900",
-        subText: "text-blue-700",
+        subText: "text-red-700",
       };
 
     case "credit":
