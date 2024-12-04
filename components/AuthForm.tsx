@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState } from 'react'
 import Image from "next/image"
 import Link from "next/link"
@@ -16,10 +17,9 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import CustomInput from './ui/CustomInput'
 const formSchema = z.object({
-    username: z.string().min(2, {
-      message: "Username must be at least 2 characters.",
-    }),
+    email: z.string().email(),
   })
 
 const AuthForm = ({type}:{type:string}) => {
@@ -29,7 +29,7 @@ const AuthForm = ({type}:{type:string}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
     },
   })
  
@@ -77,6 +77,12 @@ const AuthForm = ({type}:{type:string}) => {
             <>
             <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <CustomInput 
+        form={form} 
+        name="username" 
+        label="username" 
+        placeholder="Enter the username"/>
+        
         <FormField
           control={form.control}
           name="email"
@@ -85,6 +91,12 @@ const AuthForm = ({type}:{type:string}) => {
                 <FormLabel className='form-label'>
                     Email
                 </FormLabel>
+                <div className='flex w-full flex-col'>
+                  <FormControl>
+                    <Input placeholder='Enter your email'className='input-class' {...field}/>
+                  </FormControl>
+                  <FormMessage className='form-message mt-2' />
+                </div>
             </div>
             )}
             />
