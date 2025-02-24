@@ -83,6 +83,45 @@ const AuthForm = ({type}:{type:string}) => {
             <>
             <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        {type === 'sign-up' && (
+          <>
+                <CustomInput 
+                control={form.control} 
+                name="firstname" 
+                label="First Name" 
+                placeholder="Enter the first name"/>
+                <CustomInput 
+                control={form.control} 
+                name="lastname" 
+                label="Last Name" 
+                placeholder="Enter the last name"/>
+                <CustomInput 
+                control={form.control} 
+                name="address" 
+                label="Adddress" 
+                placeholder="Enter your specific address"/>
+                <CustomInput 
+                control={form.control} 
+                name="state" 
+                label="State" 
+                placeholder="Example: NY"/>
+                <CustomInput 
+                control={form.control} 
+                name="postalCode" 
+                label="Postal Code" 
+                placeholder="Example: 111-001"/>
+                <CustomInput 
+                control={form.control} 
+                name="dateofbirth" 
+                label="Date of Birth" 
+                placeholder="YYYY-MM-DD"/>
+                  <CustomInput 
+                control={form.control} 
+                name="ssn" 
+                label="SSN" 
+                placeholder="Example: 1234"/>
+          </>
+        )}
         <CustomInput 
         control={form.control} 
         name="email" 
